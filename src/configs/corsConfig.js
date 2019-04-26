@@ -1,4 +1,6 @@
+const { URL } = process.env;
+
 export default {
-  origin: process.env.URL,
+  origin: URL,
   optionsSuccessStatus: 200
 };

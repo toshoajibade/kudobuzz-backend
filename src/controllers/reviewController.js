@@ -32,9 +32,7 @@ export default {
               },
               {
                 $project: {
-                  _id: 0,
-                  type: "$_id.type",
-                  sources: "$_id.sources",
+                  _id: { $concat: ["$_id.type", " from ", "$_id.sources"] },
                   count: 1
                 }
               },

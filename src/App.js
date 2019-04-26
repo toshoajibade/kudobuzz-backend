@@ -7,7 +7,6 @@ import compression from "compression";
 import logger from "morgan";
 import mongoose from "mongoose";
 import routes from "./routes";
-import corsConfig from "./configs/corsConfig";
 
 const app = express();
 
@@ -19,7 +18,7 @@ dotenv.config();
 
 app.use(helmet());
 app.use(compression());
-app.use(cors(corsConfig));
+app.use(cors());
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
