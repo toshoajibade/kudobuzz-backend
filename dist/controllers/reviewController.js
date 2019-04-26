@@ -13,8 +13,6 @@ var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/
 
 var _models = require("../models");
 
-var _fs = _interopRequireDefault(require("fs"));
-
 var _default = {
   create: function () {
     var _create = (0, _asyncToGenerator2["default"])(
@@ -126,27 +124,23 @@ var _default = {
               throw new Error();
 
             case 6:
-              console.log(reviews);
-
-              _fs["default"].writeFileSync("./mum.json", JSON.stringify(reviews));
-
               res.status(200).send(reviews);
-              _context2.next = 14;
+              _context2.next = 12;
               break;
 
-            case 11:
-              _context2.prev = 11;
+            case 9:
+              _context2.prev = 9;
               _context2.t0 = _context2["catch"](0);
               res.status(404).send({
                 msg: "Review not found"
               });
 
-            case 14:
+            case 12:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[0, 11]]);
+      }, _callee2, null, [[0, 9]]);
     }));
 
     function list(_x3, _x4) {

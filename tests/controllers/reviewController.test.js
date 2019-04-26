@@ -56,7 +56,7 @@ describe("/GET /api/v1/review", () => {
         try {
           if (err) throw err;
           res.status.should.equal(200);
-          res.body.should.be.a("array");
+          res.body.should.be.a("array").that.is.not.empty;
           done();
         } catch (err) {
           done(err);

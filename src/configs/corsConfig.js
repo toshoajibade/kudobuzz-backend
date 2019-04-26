@@ -1,4 +1,4 @@
 export default {
-  origin: "http://localhost:8080",
+  origin: process.env.URL,
   optionsSuccessStatus: 200
 };
