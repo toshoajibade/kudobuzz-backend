@@ -1,5 +1,3 @@
-import Review from "./Review";
+import Reviews from "./Reviews";
 
-export {
-  Review
-}
+export { Reviews };

@@ -23,7 +23,6 @@ app.use(cors(corsConfig));
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
 app.use(routes);
 
 app.set("trust proxy", true);
@@ -32,9 +31,6 @@ app.set("trust proxy", true);
 
 const mongoDB = process.env.MONGODB_URI;
 mongoose.Promise = global.Promise;
-mongoose
-  .connect(mongoDB, { useNewUrlParser: true, autoIndex: false })
-  .then(() => console.log("connection successful"))
-  .catch(err => console.error(err));
+mongoose.connect(mongoDB, { useNewUrlParser: true, autoIndex: false });
 
 export default app;

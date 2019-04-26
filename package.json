@@ -1,5 +1,5 @@
 {
-  "name": "Reviews",
+  "name": "reviews",
   "version": "0.1.0",
   "description": "A backend for Kodobuzz reviews",
   "main": "src/app.js",
@@ -17,8 +17,7 @@
     "compression": "^1.7.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
-        "dotenv": "^6.2.0",
-        
+    "dotenv": "^6.2.0",
     "helmet": "^3.15.0",
     "mongoose": "^5.3.16",
     "morgan": "^1.9.1",

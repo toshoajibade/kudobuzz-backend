@@ -4,11 +4,11 @@ const { Schema } = mongoose;
 
 const ReviewSchema = new Schema(
   {
-    _id: { type: String, unique: true },
+    business_id: { type: String, unique: true },
     msg: { type: String, required: true },
     type: { type: String, required: true },
     sources: { type: String, required: true },
-    rating: { type: Number, required: true }
+    rating: { type: Number, required: true, min: 1, max: 5 }
   },
   { timestamps: true }
 );
