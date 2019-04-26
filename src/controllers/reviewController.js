@@ -17,15 +17,33 @@ export default {
           $match: { sources: { $ne: "kudobuzz" } }
         },
         {
-          $group: {
-            _id: {
-              _id: "$type",
-              name: "$sources"
-            },
-            matches: { $sum: 1 }
+          $facet: {
+            all_reviews: [
+              {
+                $group: {
+                  _id: {
+                    type: "$type",
+                    sources: "$sources"
+                  },
+                  count: {
+                    $sum: 1
+                  }
+                }
+              },
+              {
+                $project: {
+                  _id: 0,
+                  type: "$_id.type",
+                  sources: "$_id.sources",
+                  count: 1
+                }
+              },
+              { $sort: { count: -1 } }
+            ],
+            review_types: [{ $sortByCount: "$type" }],
+            review_sources: [{ $sortByCount: "$sources" }]
           }
-        },
-        { $sort: { matches: -1 } }
+        }
       ]);
 
       if (!reviews) throw new Error();

@@ -7,6 +7,7 @@ import { Reviews } from "../../src/models";
 chai.use(chaiHttp);
 chai.should();
 
+// TODO: add more test scenerios
 describe("/POST /api/v1/review", () => {
   afterEach(async () => {
     await Reviews.findOneAndDelete({

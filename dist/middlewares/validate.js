@@ -20,7 +20,10 @@ var _default = function _default(req, res, next) {
         break;
 
       case "rating":
-        if (key < 1 || key > 5) errors.rating = "rating should be between 1 and 5";
+        if (Number(req.body[key]) < 1 || Number(req.body[key]) > 5) {
+          errors.rating = "rating should be between 1 and 5";
+        }
+
         break;
 
       default:

@@ -13,6 +13,8 @@ var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/
 
 var _models = require("../models");
 
+var _fs = _interopRequireDefault(require("fs"));
+
 var _default = {
   create: function () {
     var _create = (0, _asyncToGenerator2["default"])(
@@ -24,38 +26,37 @@ var _default = {
           switch (_context.prev = _context.next) {
             case 0:
               _context.prev = 0;
-              console.log(req.body);
-              _context.next = 4;
+              _context.next = 3;
               return _models.Reviews.create(req.body);
 
-            case 4:
+            case 3:
               review = _context.sent;
 
               if (review) {
-                _context.next = 7;
+                _context.next = 6;
                 break;
               }
 
               throw new Error();
 
-            case 7:
+            case 6:
               res.status(201).send(review);
-              _context.next = 13;
+              _context.next = 12;
               break;
 
-            case 10:
-              _context.prev = 10;
+            case 9:
+              _context.prev = 9;
               _context.t0 = _context["catch"](0);
               res.status(400).send({
                 msg: "Bad request"
               });
 
-            case 13:
+            case 12:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 10]]);
+      }, _callee, null, [[0, 9]]);
     }));
 
     function create(_x, _x2) {
@@ -82,18 +83,35 @@ var _default = {
                   }
                 }
               }, {
-                $group: {
-                  _id: {
-                    _id: "$type",
-                    name: "$sources"
-                  },
-                  matches: {
-                    $sum: 1
-                  }
-                }
-              }, {
-                $sort: {
-                  matches: -1
+                $facet: {
+                  all_reviews: [{
+                    $group: {
+                      _id: {
+                        type: "$type",
+                        sources: "$sources"
+                      },
+                      count: {
+                        $sum: 1
+                      }
+                    }
+                  }, {
+                    $project: {
+                      _id: 0,
+                      type: "$_id.type",
+                      sources: "$_id.sources",
+                      count: 1
+                    }
+                  }, {
+                    $sort: {
+                      count: -1
+                    }
+                  }],
+                  review_types: [{
+                    $sortByCount: "$type"
+                  }],
+                  review_sources: [{
+                    $sortByCount: "$sources"
+                  }]
                 }
               }]);
 
@@ -108,23 +126,27 @@ var _default = {
               throw new Error();
 
             case 6:
+              console.log(reviews);
+
+              _fs["default"].writeFileSync("./mum.json", JSON.stringify(reviews));
+
               res.status(200).send(reviews);
-              _context2.next = 12;
+              _context2.next = 14;
               break;
 
-            case 9:
-              _context2.prev = 9;
+            case 11:
+              _context2.prev = 11;
               _context2.t0 = _context2["catch"](0);
               res.status(404).send({
                 msg: "Review not found"
               });
 
-            case 12:
+            case 14:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[0, 9]]);
+      }, _callee2, null, [[0, 11]]);
     }));
 
     function list(_x3, _x4) {

@@ -49,10 +49,6 @@ _mongoose["default"].Promise = global.Promise;
 _mongoose["default"].connect(mongoDB, {
   useNewUrlParser: true,
   autoIndex: false
-}).then(function () {
-  return console.log("connection successful");
-})["catch"](function (err) {
-  return console.error(err);
 });
 
 var _default = app;
