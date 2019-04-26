@@ -1,6 +1,5 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
-import mongoose from "mongoose";
 import app from "../../src/App";
 import data from "../testData/reviewData";
 import { Reviews } from "../../src/models";
