@@ -4,6 +4,6 @@ import { reviewController } from "../controllers";
 const review = express.Router();
 
 review.post("/", reviewController.create);
-review.get("/", reviewController.list);
+review.get("/:business_id", reviewController.list);
 
 export default review;

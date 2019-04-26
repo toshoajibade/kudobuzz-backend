@@ -14,7 +14,10 @@ export default {
     try {
       const reviews = await Reviews.aggregate([
         {
-          $match: { sources: { $ne: "kudobuzz" } }
+          $match: {
+            business_id: req.params.business_id,
+            sources: { $ne: "kudobuzz" }
+          }
         },
         {
           $facet: {
