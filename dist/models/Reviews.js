@@ -13,7 +13,7 @@ var Schema = _mongoose["default"].Schema;
 var ReviewSchema = new Schema({
   business_id: {
     type: String,
-    unique: true
+    required: true
   },
   msg: {
     type: String,

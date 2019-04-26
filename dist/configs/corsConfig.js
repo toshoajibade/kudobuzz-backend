@@ -4,8 +4,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
+var URL = process.env.URL;
 var _default = {
-  origin: "http://localhost:8080",
+  origin: URL,
   optionsSuccessStatus: 200
 };
 exports["default"] = _default;

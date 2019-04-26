@@ -1,7 +1,7 @@
 {
   "name": "reviews",
   "version": "0.1.0",
-  "description": "A backend for Kodobuzz reviews",
+  "description": "A backend for Kudobuzz reviews",
   "main": "src/app.js",
   "author": "Tosho Ajibade",
   "private": true,
@@ -10,6 +10,11 @@
     "build": "babel src -d dist",
     "start": "node dist/server.js",
     "test": "npm run build && mocha ./tests --recursive -r @babel/register --exit"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run test"
+    }
   },
   "dependencies": {
     "@babel/runtime": "^7.2.0",
@@ -37,6 +42,7 @@
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-prettier": "^3.0.0",
+    "husky": "^2.1.0",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.9",
     "prettier": "^1.15.3"

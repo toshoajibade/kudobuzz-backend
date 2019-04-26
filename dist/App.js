@@ -25,8 +25,6 @@ var _mongoose = _interopRequireDefault(require("mongoose"));
 
 var _routes = _interopRequireDefault(require("./routes"));
 
-var _corsConfig = _interopRequireDefault(require("./configs/corsConfig"));
-
 var app = (0, _express["default"])(); // Load environmental variables
 
 _dotenv["default"].config(); // Configure app middleware
@@ -34,7 +32,7 @@ _dotenv["default"].config(); // Configure app middleware
 
 app.use((0, _helmet["default"])());
 app.use((0, _compression["default"])());
-app.use((0, _cors["default"])(_corsConfig["default"]));
+app.use((0, _cors["default"])());
 app.use((0, _morgan["default"])("dev"));
 app.use(_bodyParser["default"].json());
 app.use(_bodyParser["default"].urlencoded({
